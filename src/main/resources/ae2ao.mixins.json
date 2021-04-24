@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "ru.DmN.AE2AO.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "ae2extras.refmap.json",
+  "mixins": [
+    "ControllerValidatorMixin",
+    "GridNodeMixin",
+    "PathGridCacheMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}
