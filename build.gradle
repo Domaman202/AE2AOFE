@@ -89,7 +89,6 @@ dependencies {
     compile fg.deobf("appeng:appliedenergistics2:${ae2_version}")
     compileOnly fg.deobf("mezz.jei:jei-1.16.4:${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:${jei_version}")
-    implementation 'com.moandjiezana.toml:toml4j:0.7.2'
     annotationProcessor 'org.spongepowered:mixin:0.8.2:processor'
 }
 
