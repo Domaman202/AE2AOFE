@@ -2,12 +2,13 @@
   "required": true,
   "package": "ru.DmN.AE2AO.mixin",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "ae2extras.refmap.json",
+  "refmap": "ae2ao.refmap.json",
   "mixins": [
     "AbstractStorageCellMixin",
     "ControllerValidatorMixin",
     "GridNodeMixin",
-    "PathGridCacheMixin"
+    "PathGridCacheMixin",
+    "PlayerListMixin"
   ],
   "injectors": {
     "defaultRequire": 1

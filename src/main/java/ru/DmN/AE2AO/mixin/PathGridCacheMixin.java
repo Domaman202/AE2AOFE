@@ -18,7 +18,7 @@ import ru.DmN.AE2AO.Main;
 import java.util.Set;
 
 @Mixin(value = PathGridCache.class, remap = false)
-public abstract class PathGridCacheMixin {
+public class PathGridCacheMixin {
     @Final @Shadow  private Set<ControllerTileEntity>  controllers;
     @Final @Shadow  private IGrid                       myGrid;
     @Shadow         private boolean                     recalculateControllerNextTick;
