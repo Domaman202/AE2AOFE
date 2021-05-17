@@ -20,14 +20,21 @@ public class Config implements Cloneable {
     // Storage Cell Fire Damage
     public boolean SCFD = false;
     //
+    public boolean ChatInfo = true;
+    //
     public Config clone() {
+        try { super.clone(); } catch (CloneNotSupportedException ignored) { }
+
         Config c = new Config();
+
         c.DisableChannels = DisableChannels;
         c.ControllerLimits = ControllerLimits;
         c.SCFD = SCFD;
         c.Max_X = Max_X;
         c.Max_Y = Max_Y;
         c.Max_Z = Max_Z;
+        c.ChatInfo = ChatInfo;
+
         return c;
     }
     // Networking
@@ -35,27 +42,29 @@ public class Config implements Cloneable {
         DisableChannels = buf.readBoolean();
         ControllerLimits = buf.readBoolean();
         SCFD = buf.readBoolean();
+        ChatInfo = buf.readBoolean();
         Max_X = buf.readInt();
         Max_Y = buf.readInt();
         Max_Z = buf.readInt();
-
         Main.lc = this;
 
-        Config config = Main.lc;
-        Minecraft.getInstance().player.sendMessage(new StringTextComponent(
-                "AE2AO config loaded!\nControllerLimits = " + config.ControllerLimits +
-                        "\nDisableChannels = " + config.DisableChannels +
-                        "\nSCFD = " + config.SCFD +
-                        "\nMax_X = " + config.Max_X +
-                        "\nMax_Y = " + config.Max_Y +
-                        "\nMax_Z = " + config.Max_Z
-        ), new UUID(0, 0));
+        if (ChatInfo) {
+            Minecraft.getInstance().player.sendMessage(new StringTextComponent(
+                    "AE2AO config loaded!\nControllerLimits = " + ControllerLimits +
+                            "\nDisableChannels = " + DisableChannels +
+                            "\nSCFD = " + SCFD +
+                            "\nMax_X = " + Max_X +
+                            "\nMax_Y = " + Max_Y +
+                            "\nMax_Z = " + Max_Z
+            ), new UUID(0, 0));
+        }
     }
 
     public void toBytes(PacketBuffer buf) {
         buf.writeBoolean(DisableChannels);
         buf.writeBoolean(ControllerLimits);
         buf.writeBoolean(SCFD);
+        buf.writeBoolean(ChatInfo);
         buf.writeInt(Max_X);
         buf.writeInt(Max_Y);
         buf.writeInt(Max_Z);
