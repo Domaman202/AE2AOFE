@@ -3,7 +3,7 @@ package com.moandjiezana.toml;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
-class BooleanValueReaderWriter implements ValueReader, ValueWriter {
+class BooleanValueReaderWriter implements ValueReader {
   
   static final BooleanValueReaderWriter BOOLEAN_VALUE_READER_WRITER = new BooleanValueReaderWriter(); 
 
@@ -23,23 +23,6 @@ class BooleanValueReaderWriter implements ValueReader, ValueWriter {
     
     return b;
   }
-
-  @Override
-  public boolean canWrite(Object value) {
-    return value instanceof Boolean;
-  }
-
-  @Override
-  public void write(Object value, WriterContext context) {
-    context.write(value.toString());
-  }
-
-  @Override
-  public boolean isPrimitiveType() {
-    return true;
-  }
-
-  private BooleanValueReaderWriter() {}
 
   @Override
   public String toString() {

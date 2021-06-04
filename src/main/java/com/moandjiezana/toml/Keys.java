@@ -22,7 +22,7 @@ class Keys {
   }
 
   static Keys.Key[] split(String key) {
-    List<Key> splitKey = new ArrayList<Key>();
+    List<Key> splitKey = new ArrayList<>();
     StringBuilder current = new StringBuilder();
     boolean quoted = false;
     boolean indexable = true;

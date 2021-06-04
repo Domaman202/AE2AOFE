@@ -2,13 +2,13 @@ package com.moandjiezana.toml;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-class NumberValueReaderWriter implements ValueReader, ValueWriter {
+class NumberValueReaderWriter implements ValueReader {
   static final NumberValueReaderWriter NUMBER_VALUE_READER_WRITER = new NumberValueReaderWriter();
-  
+
   @Override
   public boolean canRead(String s) {
     char firstChar = s.charAt(0);
-    
+
     return firstChar == '+' || firstChar == '-' || Character.isDigit(firstChar);
   }
 
@@ -82,21 +82,6 @@ class NumberValueReaderWriter implements ValueReader, ValueWriter {
         errors.invalidValue(context.identifier.getName(), sb.toString(), context.line.get());
         return errors;
     }
-  }
-
-  @Override
-  public boolean canWrite(Object value) {
-    return value instanceof Number;
-  }
-
-  @Override
-  public void write(Object value, WriterContext context) {
-    context.write(value.toString());
-  }
-
-  @Override
-  public boolean isPrimitiveType() {
-    return true;
   }
 
   @Override

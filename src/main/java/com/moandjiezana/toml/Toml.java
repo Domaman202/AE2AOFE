@@ -65,17 +65,6 @@ public class Toml {
   }
 
   /**
-   * Populates the current Toml instance with values from inputStream.
-   *
-   * @param inputStream Closed after it has been read.
-   * @return this instance
-   * @throws IllegalStateException If file contains invalid TOML
-   */
-  public Toml read(InputStream inputStream) {
-    return read(new InputStreamReader(inputStream));
-  }
-
-  /**
    * Populates the current Toml instance with values from reader.
    *
    * @param reader Closed after it has been read.
@@ -94,17 +83,6 @@ public class Toml {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    return this;
-  }
-
-  /**
-   * Populates the current Toml instance with values from otherToml.
-   *
-   * @return this instance
-   */
-  public Toml read(Toml otherToml) {
-    this.values = otherToml.values;
-    
     return this;
   }
 

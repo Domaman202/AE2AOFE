@@ -29,7 +29,7 @@ public class Main {
     public static Config lcc = null;
     public static Config lc = null;
 
-    public Main() throws Exception {
+    public Main() {
         //
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -52,8 +52,6 @@ public class Main {
                 lcc = new Toml().read(conf).to(Config.class);
                 lc = lcc.clone();
             }
-
-            System.out.println();
         } catch (Exception e) {
             LOGGER.throwing(e);
         }
