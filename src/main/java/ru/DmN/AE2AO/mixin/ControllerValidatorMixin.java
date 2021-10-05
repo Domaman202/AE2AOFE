@@ -4,7 +4,6 @@ import appeng.api.networking.IGridHost;
 import appeng.api.networking.IGridNode;
 import appeng.me.pathfinding.ControllerValidator;
 import appeng.tile.networking.ControllerTileEntity;
-import net.minecraft.core.BlockPos;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -30,7 +29,7 @@ public class ControllerValidatorMixin {
 
         if (isValid && h instanceof ControllerTileEntity) {
 //            BlockPos pos = ((ControllerTileEntity) h).getPos();
-
+//
 //            minX = Math.min(pos.getX(), minX);
 //            maxX = Math.max(pos.getX(), maxX);
 //            minY = Math.min(pos.getY(), minY);
