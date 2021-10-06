@@ -22,7 +22,7 @@ archivesBaseName = "${modid}"
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = JavaLanguageVersion.of(16)
 
 minecraft {
-    mappings channel: 'official', version: mcp_version
+    mappings channel: 'snapshot', version: '20200514-1.15.1'
     runs {
         client {
             properties 'fml.earlyprogresswindow': 'false'
@@ -73,7 +73,7 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
+    minecraft 'net.minecraftforge:forge:1.15.2-31.2.55'
     compileOnly "appeng:appliedenergistics2:${ae2_version}"
     runtimeOnly fg.deobf("appeng:appliedenergistics2:${ae2_version}")
     compileOnly "mezz.jei:jei-${jei_minecraft_version}:${jei_version}:api"
