@@ -1,8 +1,8 @@
 package ru.DmN.AE2AO;
 
-import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.fmllegacy.network.NetworkRegistry;
-import net.minecraftforge.fmllegacy.network.simple.SimpleChannel;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.network.NetworkRegistry;
+import net.minecraftforge.fml.network.simple.SimpleChannel;
 
 public class Networking {
     public static SimpleChannel INSTANCE;
@@ -13,7 +13,7 @@ public class Networking {
     }
 
     public static void registerMessages() {
-        INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation("ae2ao:test"), () -> "1.0", (x) -> true, (x) -> true);
+        INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation("ae2ao", "test"), () -> "1.0", s -> true, s -> true);
 
         INSTANCE.registerMessage(nextID(), Config.class, Config::toBytes, Config::new, Config::handle);
     }
