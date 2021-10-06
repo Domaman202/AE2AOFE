@@ -19,7 +19,7 @@ version = "${mod_version}-${mc_version}"
 group = "ru.DmN.${modid}"
 archivesBaseName = "${modid}"
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = JavaLanguageVersion.of(16)
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = JavaLanguageVersion.of(8)
 
 minecraft {
     mappings channel: 'snapshot', version: '20200514-1.15.1'
