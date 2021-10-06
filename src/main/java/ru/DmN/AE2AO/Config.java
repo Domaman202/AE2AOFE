@@ -1,15 +1,17 @@
 package ru.DmN.AE2AO;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraftforge.fml.network.NetworkEvent;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraftforge.fmllegacy.network.NetworkEvent;
 
 import java.util.UUID;
 import java.util.function.Supplier;
 
 public class Config implements Cloneable {
-    public Config() { }
+    public Config() {
+    }
+
     //
     public boolean DisableChannels = false;
     public boolean ControllerLimits = false;
@@ -21,9 +23,13 @@ public class Config implements Cloneable {
     public boolean SCFD = false;
     //
     public boolean ChatInfo = true;
+
     //
     public Config clone() {
-        try { super.clone(); } catch (CloneNotSupportedException ignored) { }
+        try {
+            super.clone();
+        } catch (CloneNotSupportedException ignored) {
+        }
 
         Config c = new Config();
 
@@ -37,8 +43,9 @@ public class Config implements Cloneable {
 
         return c;
     }
+
     // Networking
-    public Config(PacketBuffer buf) {
+    public Config(FriendlyByteBuf buf) {
         DisableChannels = buf.readBoolean();
         ControllerLimits = buf.readBoolean();
         SCFD = buf.readBoolean();
@@ -49,7 +56,7 @@ public class Config implements Cloneable {
         Main.lc = this;
 
         if (ChatInfo) {
-            Minecraft.getInstance().player.sendMessage(new StringTextComponent(
+            Minecraft.getInstance().player.sendMessage(new TextComponent(
                     "AE2AO config loaded!\nControllerLimits = " + ControllerLimits +
                             "\nDisableChannels = " + DisableChannels +
                             "\nSCFD = " + SCFD +
@@ -60,7 +67,7 @@ public class Config implements Cloneable {
         }
     }
 
-    public void toBytes(PacketBuffer buf) {
+    public void toBytes(FriendlyByteBuf buf) {
         buf.writeBoolean(DisableChannels);
         buf.writeBoolean(ControllerLimits);
         buf.writeBoolean(SCFD);
@@ -70,5 +77,6 @@ public class Config implements Cloneable {
         buf.writeInt(Max_Z);
     }
 
-    public void handle(Supplier<NetworkEvent.Context> ctx) { }
+    public void handle(Supplier<NetworkEvent.Context> ctx) {
+    }
 }
