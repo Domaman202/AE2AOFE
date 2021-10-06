@@ -19,7 +19,7 @@ import java.util.Set;
 
 @Mixin(value = PathGridCache.class, remap = false)
 public class PathGridCacheMixin {
-    @Final @Shadow  private Set<ControllerTileEntity>   controllers;
+    @Final @Shadow  private Set<ControllerTileEntity>  controllers;
     @Final @Shadow  private IGrid                       myGrid;
     @Shadow         private boolean                     recalculateControllerNextTick;
     @Shadow         private ControllerState             controllerState;
