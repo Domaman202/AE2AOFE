@@ -1,9 +1,9 @@
 package ru.DmN.AE2AO;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraftforge.fmllegacy.network.NetworkEvent;
+import net.minecraft.network.PacketBuffer;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraftforge.fml.network.NetworkEvent;
 
 import java.util.UUID;
 import java.util.function.Supplier;
@@ -45,7 +45,7 @@ public class Config implements Cloneable {
     }
 
     // Networking
-    public Config(FriendlyByteBuf buf) {
+    public Config(PacketBuffer buf) {
         DisableChannels = buf.readBoolean();
         ControllerLimits = buf.readBoolean();
         SCFD = buf.readBoolean();
@@ -56,7 +56,7 @@ public class Config implements Cloneable {
         Main.lc = this;
 
         if (ChatInfo) {
-            Minecraft.getInstance().player.sendMessage(new TextComponent(
+            Minecraft.getInstance().player.sendMessage(new StringTextComponent(
                     "AE2AO config loaded!\nControllerLimits = " + ControllerLimits +
                             "\nDisableChannels = " + DisableChannels +
                             "\nSCFD = " + SCFD +
@@ -67,7 +67,7 @@ public class Config implements Cloneable {
         }
     }
 
-    public void toBytes(FriendlyByteBuf buf) {
+    public void toBytes(PacketBuffer buf) {
         buf.writeBoolean(DisableChannels);
         buf.writeBoolean(ControllerLimits);
         buf.writeBoolean(SCFD);
