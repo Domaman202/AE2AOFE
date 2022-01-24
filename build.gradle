@@ -7,7 +7,7 @@ buildscript {
 
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
@@ -20,7 +20,7 @@ version = "${mod_version}-${mc_version}"
 group = "ru.DmN.${modid}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "${modid}"
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = JavaLanguageVersion.of(17)
 
 minecraft {
     // The mappings can be changed at any time, and must be in the following format.
@@ -28,7 +28,7 @@ minecraft {
     // stable_#            Stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: "snapshot", version: "${mapping}-${mcp_version}"
+    mappings channel: 'official', version: "${mc_version}"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 
     //accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
@@ -85,10 +85,11 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}" //21
-    compile fg.deobf("appeng:appliedenergistics2:${ae2_version}")
-    compileOnly fg.deobf("mezz.jei:jei-1.16.4:${jei_version}:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:${jei_version}")
+    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
+    compileOnly "appeng:appliedenergistics2:${ae2_version}"
+    runtimeOnly fg.deobf("appeng:appliedenergistics2:${ae2_version}")
+    compileOnly "mezz.jei:jei-${mc_version}:${jei_version}:api"
+    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
     annotationProcessor 'org.spongepowered:mixin:0.8.2:processor'
 }
 

@@ -8,14 +8,15 @@ import ru.DmN.AE2AO.Main;
 
 @Mixin(value = GridNode.class, remap = false)
 public class GridNodeMixin {
-    @Shadow private int usedChannels;
+    @Shadow
+    private int usedChannels;
 
     /**
      * @author DomamaN202
      * @reason Add system turn off channels
      */
-    @Overwrite private int getUsedChannels()
-    {
+    @Overwrite
+    public int getUsedChannels() {
         return Main.lc.DisableChannels ? 1 : usedChannels;
     }
 }
