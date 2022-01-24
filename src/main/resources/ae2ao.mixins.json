@@ -6,7 +6,6 @@
   "mixins": [
     "ControllerValidatorMixin",
     "GridNodeMixin",
-    "PathGridCacheMixin",
     "PlayerListMixin"
   ],
   "injectors": {
