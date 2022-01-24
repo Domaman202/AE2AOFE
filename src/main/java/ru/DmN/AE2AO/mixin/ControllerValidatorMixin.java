@@ -65,6 +65,7 @@ public class ControllerValidatorMixin {
 
     /**
      * @author DomamaN202
+     * @reason
      */
     @Overwrite
     public static ControllerState calculateState(Collection<ControllerBlockEntity> controllers) throws Throwable {
