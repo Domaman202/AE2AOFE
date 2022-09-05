@@ -2,10 +2,10 @@ package ru.DmN.AE2AO;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.contents.LiteralContents;
 import net.minecraftforge.network.NetworkEvent;
 
-import java.util.UUID;
 import java.util.function.Supplier;
 
 public class Config implements Cloneable {
@@ -49,14 +49,14 @@ public class Config implements Cloneable {
         Main.lc = this;
 
         if (ChatInfo) {
-            Minecraft.getInstance().player.sendMessage(new TextComponent(
+            Minecraft.getInstance().player.sendSystemMessage(MutableComponent.create(new LiteralContents(
                     "AE2AO config loaded!\nControllerLimits = " + ControllerLimits +
                             "\nDisableChannels = " + DisableChannels +
                             "\nSCFD = " + SCFD +
                             "\nMax_X = " + Max_X +
                             "\nMax_Y = " + Max_Y +
                             "\nMax_Z = " + Max_Z
-            ), new UUID(0, 0));
+            )));
         }
     }
 
