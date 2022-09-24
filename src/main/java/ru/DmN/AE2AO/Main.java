@@ -28,9 +28,6 @@ public class Main {
         //
         MinecraftForge.EVENT_BUS.register(this);
 
-        //
-        Networking.registerMessages();
-
         // Config init
         try {
             File conf = FMLPaths.GAMEDIR.get().resolve("config" + File.separator + "ae2ao.toml").toFile();
@@ -50,15 +47,5 @@ public class Main {
         } catch (Exception e) {
             LOGGER.throwing(e);
         }
-    }
-
-    @SubscribeEvent
-    public void serverStartingEvent(ServerStartedEvent event) {
-        event.getServer().getCommands().getDispatcher().register(
-                Commands.literal("loadConfig").executes(context -> {
-                    Networking.INSTANCE.sendTo(Main.lcc, context.getSource().getPlayerOrException().connection.connection, NetworkDirection.PLAY_TO_CLIENT);
-                    return Command.SINGLE_SUCCESS;
-                })
-        );
     }
 }

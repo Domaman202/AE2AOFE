@@ -5,8 +5,7 @@
   "refmap": "ae2ao.refmap.json",
   "mixins": [
     "ControllerValidatorMixin",
-    "GridNodeMixin",
-    "PlayerListMixin"
+    "GridNodeMixin"
   ],
   "injectors": {
     "defaultRequire": 1
