@@ -8,6 +8,6 @@ import ru.DmN.AE2AO.AE2AOMain;
 public class SpatialStorageCellItemMixin {
     boolean isFireResistant;
     public boolean isFireResistant() {
-        return AE2AOMain.config.SCFD || this.isFireResistant;
+        return AE2AOMain.config.CellFireResistance || this.isFireResistant;
     }
 }

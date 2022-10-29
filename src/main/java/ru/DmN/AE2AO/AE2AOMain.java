@@ -32,7 +32,7 @@ public class AE2AOMain {
 
             if (conf.createNewFile()) {
                 FileOutputStream stream = new FileOutputStream(conf);
-                stream.write("DisableChannels = false\nControllerLimits = false\nMax_X = 7\nMax_Y = 7\nMax_Z = 7\nSCFD = false".getBytes(StandardCharsets.UTF_8));
+                stream.write("DisableChannels = false\nControllerLimits = true\nMax_X = 7\nMax_Y = 7\nMax_Z = 7\nCellFireResistance = false\nPortableCellFireResistance = false".getBytes(StandardCharsets.UTF_8));
                 stream.flush();
                 stream.close();
 
