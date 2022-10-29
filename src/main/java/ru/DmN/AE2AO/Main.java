@@ -4,7 +4,7 @@ import com.moandjiezana.toml.Toml;
 import com.mojang.brigadier.Command;
 import net.minecraft.commands.Commands;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.server.ServerStartedEvent;
+import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.loading.FMLPaths;
@@ -27,7 +27,10 @@ public class Main {
     public Main() {
         //
         MinecraftForge.EVENT_BUS.register(this);
+    }
 
+    @SubscribeEvent
+    public void serverStartingEvent(ServerStartingEvent event) {
         // Config init
         try {
             File conf = FMLPaths.GAMEDIR.get().resolve("config" + File.separator + "ae2ao.toml").toFile();
