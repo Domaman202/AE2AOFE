@@ -8,7 +8,7 @@ import net.minecraft.core.BlockPos;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
-import ru.DmN.AE2AO.Main;
+import ru.DmN.AE2AO.AE2AOMain;
 
 import java.util.Collection;
 
@@ -52,7 +52,7 @@ public class ControllerValidatorMixin {
             minZ = Math.min(pos.getZ(), minZ);
             maxZ = Math.max(pos.getZ(), maxZ);
 
-            if (maxX - minX < Main.lc.Max_X && maxY - minY < Main.lc.Max_Y && maxZ - minZ < Main.lc.Max_Z) {
+            if (maxX - minX < AE2AOMain.config.Max_X && maxY - minY < AE2AOMain.config.Max_Y && maxZ - minZ < AE2AOMain.config.Max_Z) {
                 this.found++;
                 return true;
             }
@@ -65,7 +65,7 @@ public class ControllerValidatorMixin {
 
     /**
      * @author DomamaN202
-     * @reason
+     * @reason Adding setting "ControllerLimits"
      */
     @Overwrite
     public static ControllerState calculateState(Collection<ControllerBlockEntity> controllers) throws Throwable {
@@ -87,7 +87,7 @@ public class ControllerValidatorMixin {
         if (!cv.isValid())
             return ControllerState.CONTROLLER_CONFLICT;
 
-        if (cv.getFound() != controllers.size() && Main.lc.ControllerLimits)
+        if (cv.getFound() != controllers.size() && AE2AOMain.config.ControllerLimits)
             return ControllerState.CONTROLLER_CONFLICT;
 
         if (hasControllerCross(controllers))
