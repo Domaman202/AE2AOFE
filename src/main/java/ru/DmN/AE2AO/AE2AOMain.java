@@ -11,14 +11,13 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.nio.charset.StandardCharsets;
 
 @Mod("ae2ao")
 public class AE2AOMain {
     // Logger
     static final Logger LOGGER = LogManager.getLogger();
     // Config
-    public static Config config = null;
+    public static Config config;
 
     public AE2AOMain() {
         MinecraftForge.EVENT_BUS.register(this);
@@ -32,15 +31,29 @@ public class AE2AOMain {
 
             if (conf.createNewFile()) {
                 FileOutputStream stream = new FileOutputStream(conf);
-                stream.write("DisableChannels = false\nControllerLimits = true\nMax_X = 7\nMax_Y = 7\nMax_Z = 7\nCellFireResistance = false\nPortableCellFireResistance = false".getBytes(StandardCharsets.UTF_8));
+                stream.write("""
+                        # Отключение каналов
+                        # Disable channels
+                        DisableChannels = false
+                        # Лимиты количества контроллеров в сети
+                        # Limits on the number of controllers in the network
+                        ControllerLimits = true
+                        # Размеры контроллера
+                        # Controller size
+                        Max_X = 7
+                        Max_Y = 7
+                        Max_Z = 7
+                        # Антисгорание ячеек
+                        # Cell anti-burning
+                        CellFireResistance = false
+                        PortableCellFireResistance = false
+                        """.getBytes());
                 stream.flush();
                 stream.close();
-
-                config = new Config();
-            } else {
-                config = new Toml().read(conf).to(Config.class);
             }
+            config = new Toml().read(conf).to(Config.class);
         } catch (Exception e) {
+            System.out.println("[DMN]");
             LOGGER.throwing(e);
         }
     }

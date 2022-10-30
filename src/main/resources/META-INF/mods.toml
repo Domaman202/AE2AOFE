@@ -27,11 +27,11 @@ displayName="AE2AO" #mandatory
 # A URL for the "homepage" for this mod, displayed in the mod UI
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-logoFile="examplemod.png" #optional
+logoFile="logo.png" #optional
 # A text field displayed in the mod UI
 credits="Thanks for this example mod goes to Java" #optional
 # A text field displayed in the mod UI
-authors="DomamaN202" #optional
+authors="DomamaN202, PashkovD" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description="AE2 addon"
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
@@ -45,5 +45,5 @@ description="AE2 addon"
     # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
-    side="BOTH"
+    side="SERVER"
 
