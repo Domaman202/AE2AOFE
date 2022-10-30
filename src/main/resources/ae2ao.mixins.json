@@ -7,7 +7,6 @@
     "BasicStorageCellMixin",
     "ControllerValidatorMixin",
     "GridNodeMixin",
-    "PlayerListMixin",
     "PortableCellItemMixin",
     "SpatialStorageCellItemMixin"
   ],
