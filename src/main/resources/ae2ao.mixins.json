@@ -4,9 +4,11 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "ae2ao.refmap.json",
   "mixins": [
+    "BasicStorageCellMixin",
     "ControllerValidatorMixin",
     "GridNodeMixin",
-    "PlayerListMixin"
+    "PortableCellItemMixin",
+    "SpatialStorageCellItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1
