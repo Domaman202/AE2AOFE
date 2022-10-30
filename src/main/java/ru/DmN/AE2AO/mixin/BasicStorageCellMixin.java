@@ -7,14 +7,14 @@ import ru.DmN.AE2AO.Main;
 
 @Mixin(value = AbstractStorageCell.class, remap = false)
 public abstract class BasicStorageCellMixin extends AEBaseItem {
-    boolean burnable;
+    boolean isFireResistant;
 
     public BasicStorageCellMixin(Properties properties) {
         super(properties);
     }
 
     @Override
-    public boolean isImmuneToFire() {
-        return Main.config.CellFireResistance || this.burnable;
+    public boolean isFireResistant() {
+        return Main.config.CellFireResistance || this.isFireResistant;
     }
 }
