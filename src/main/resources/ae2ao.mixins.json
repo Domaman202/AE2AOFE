@@ -7,8 +7,7 @@
     "AbstractStorageCellMixin",
     "ControllerValidatorMixin",
     "GridNodeMixin",
-    "PathGridCacheMixin",
-    "PlayerListMixin"
+    "PathGridCacheMixin"
   ],
   "injectors": {
     "defaultRequire": 1

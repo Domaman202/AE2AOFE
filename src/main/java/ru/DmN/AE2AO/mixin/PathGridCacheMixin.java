@@ -34,7 +34,7 @@ public class PathGridCacheMixin {
 
         if (controllers.isEmpty()) {
             controllerState = ControllerState.NO_CONTROLLER;
-        } else if (Main.lc.ControllerLimits) {
+        } else if (Main.config.ControllerLimits) {
             IGridNode startingNode = this.controllers.iterator().next().getGridNode(AEPartLocation.INTERNAL);
             if (startingNode == null) {
                 this.controllerState = ControllerState.CONTROLLER_CONFLICT;
