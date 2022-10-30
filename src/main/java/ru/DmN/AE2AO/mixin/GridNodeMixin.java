@@ -16,6 +16,6 @@ public class GridNodeMixin {
      */
     @Overwrite private int getUsedChannels()
     {
-        return Main.lc.DisableChannels ? 1 : usedChannels;
+        return Main.config.DisableChannels ? 1 : usedChannels;
     }
 }
