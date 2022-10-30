@@ -11,7 +11,7 @@ license="MIT"
     displayName="AE2AO"
     logoFile="logo.png"
 
-    authors="DomamaN202"
+    authors="DomamaN202, PashkovD"
 
     description="AE2 addon"
 
@@ -36,3 +36,4 @@ license="MIT"
     versionRange="[12,13)"
     ordering="AFTER"
     side="BOTH"
+
