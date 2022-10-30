@@ -7,14 +7,14 @@ import ru.DmN.AE2AO.Main;
 
 @Mixin(value = SpatialStorageCellItem.class, remap = false)
 public abstract class SpatialStorageCellItemMixin extends AEBaseItem {
-    boolean isFireResistant;
+    boolean burnable;
 
     public SpatialStorageCellItemMixin(Properties properties) {
         super(properties);
     }
 
     @Override
-    public boolean isFireResistant() {
-        return Main.config.CellFireResistance || this.isFireResistant;
+    public boolean isImmuneToFire() {
+        return Main.config.CellFireResistance || this.burnable;
     }
 }

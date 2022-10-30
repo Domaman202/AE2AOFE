@@ -1,20 +1,20 @@
 package ru.DmN.AE2AO.mixin;
 
 import appeng.items.AEBaseItem;
-import appeng.items.storage.BasicStorageCell;
+import appeng.items.storage.AbstractStorageCell;
 import org.spongepowered.asm.mixin.Mixin;
 import ru.DmN.AE2AO.Main;
 
-@Mixin(value = BasicStorageCell.class, remap = false)
+@Mixin(value = AbstractStorageCell.class, remap = false)
 public abstract class BasicStorageCellMixin extends AEBaseItem {
-    boolean isFireResistant;
+    boolean burnable;
 
     public BasicStorageCellMixin(Properties properties) {
         super(properties);
     }
 
     @Override
-    public boolean isFireResistant() {
-        return Main.config.CellFireResistance || this.isFireResistant;
+    public boolean isImmuneToFire() {
+        return Main.config.CellFireResistance || this.burnable;
     }
 }

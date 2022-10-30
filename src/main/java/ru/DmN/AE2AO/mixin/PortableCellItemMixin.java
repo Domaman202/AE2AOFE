@@ -9,14 +9,14 @@ import java.util.function.DoubleSupplier;
 
 @Mixin(value = PortableCellItem.class, remap = false)
 public abstract class PortableCellItemMixin extends AEBasePoweredItem {
-    boolean isFireResistant;
+    boolean burnable;
 
     public PortableCellItemMixin(DoubleSupplier powerCapacity, Properties props) {
         super(powerCapacity, props);
     }
 
     @Override
-    public boolean isFireResistant() {
-        return Main.config.PortableCellFireResistance || this.isFireResistant;
+    public boolean isImmuneToFire() {
+        return Main.config.PortableCellFireResistance || this.burnable;
     }
 }
