@@ -13,10 +13,10 @@ public class AE2AOMain {
     static final String ModID = "ae2ao";
 
     static final Logger LOGGER = LogManager.getLogger();
-    public static Config config = Config.SERVER;
+    public static Config config = Config.Instance;
 
     public AE2AOMain() {
         FMLJavaModLoadingContext.get().getModEventBus().register(this);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SERVER_SPEC, ModID + ".toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.Instance_Spec, ModID + ".toml");
     }
 }
