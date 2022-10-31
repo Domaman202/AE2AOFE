@@ -8,13 +8,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-@Mod("ae2ao")
+@Mod(AE2AOMain.ModID)
 public class AE2AOMain {
+    static final String ModID = "ae2ao";
+
     static final Logger LOGGER = LogManager.getLogger();
     public static Config config = Config.SERVER;
 
     public AE2AOMain() {
         FMLJavaModLoadingContext.get().getModEventBus().register(this);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SERVER_SPEC, "ae2ao.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SERVER_SPEC, ModID + ".toml");
     }
 }

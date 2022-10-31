@@ -88,8 +88,6 @@ dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
     compileOnly "appeng:appliedenergistics2-forge:${ae2_version}"
     runtimeOnly fg.deobf("appeng:appliedenergistics2-forge:${ae2_version}")
-//    compileOnly "mezz.jei:jei-${mc_version}:${jei_version}:api"
-//    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
     annotationProcessor 'org.spongepowered:mixin:0.8.2:processor'
 }
 
