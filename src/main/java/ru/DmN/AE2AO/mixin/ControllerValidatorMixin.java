@@ -52,7 +52,7 @@ public class ControllerValidatorMixin {
             minZ = Math.min(pos.getZ(), minZ);
             maxZ = Math.max(pos.getZ(), maxZ);
 
-            if (maxX - minX < AE2AOMain.config.Max_X && maxY - minY < AE2AOMain.config.Max_Y && maxZ - minZ < AE2AOMain.config.Max_Z) {
+            if (maxX - minX < AE2AOMain.config.ControllerSizeLimits[0].get() && maxY - minY < AE2AOMain.config.ControllerSizeLimits[1].get() && maxZ - minZ < AE2AOMain.config.ControllerSizeLimits[2].get()) {
                 this.found++;
                 return true;
             }
@@ -87,7 +87,7 @@ public class ControllerValidatorMixin {
         if (!cv.isValid())
             return ControllerState.CONTROLLER_CONFLICT;
 
-        if (cv.getFound() != controllers.size() && AE2AOMain.config.ControllerLimits)
+        if (cv.getFound() != controllers.size() && AE2AOMain.config.ControllerLimits.get())
             return ControllerState.CONTROLLER_CONFLICT;
 
         if (hasControllerCross(controllers))

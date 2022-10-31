@@ -17,6 +17,6 @@ public class GridNodeMixin {
      */
     @Overwrite
     public int getUsedChannels() {
-        return AE2AOMain.config.DisableChannels ? 1 : usedChannels;
+        return AE2AOMain.config.DisableChannels.get() ? 1 : usedChannels;
     }
 }

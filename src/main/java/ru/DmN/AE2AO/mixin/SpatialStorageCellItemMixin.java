@@ -15,6 +15,6 @@ public abstract class SpatialStorageCellItemMixin extends AEBaseItem {
 
     @Override
     public boolean isFireResistant() {
-        return AE2AOMain.config.CellFireResistance || this.isFireResistant;
+        return AE2AOMain.config.CellFireResistance.get() || this.isFireResistant;
     }
 }
