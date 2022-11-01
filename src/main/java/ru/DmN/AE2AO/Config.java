@@ -16,9 +16,20 @@ public class Config {
     public final ForgeConfigSpec.BooleanValue PortableCellFireResistance;
 
     Config(final ForgeConfigSpec.Builder builder) {
-        DisableChannels = builder.define("DisableChannels", false);
+        DisableChannels = builder.comment("""
+        Disable all channels logic. If true amount of used channels is always 0."""
+        ).define("DisableChannels", false);
+
+
+
+        builder.push("Cells");
+
         CellFireResistance = builder.define("CellFireResistance", false);
         PortableCellFireResistance = builder.define("PortableCellFireResistance", false);
+
+        builder.pop();
+
+
 
         builder.push("Controllers");
 
