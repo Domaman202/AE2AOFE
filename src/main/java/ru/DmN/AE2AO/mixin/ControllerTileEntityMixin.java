@@ -48,7 +48,7 @@ public abstract class ControllerTileEntityMixin extends AENetworkPowerTileEntity
         final boolean oldValid = this.isValid;
 
         this.isValid = ((xx ? 1 : 0) + (yy ? 1 : 0) + (zz ? 1 : 0) <= 1);
-        if (AE2AOMain.config.ControllerCross.get()) {
+        if (AE2AOMain.config.ControllerCross.get() || !AE2AOMain.config.ControllerLimits.get()) {
             this.isValid = true;
         }
 
