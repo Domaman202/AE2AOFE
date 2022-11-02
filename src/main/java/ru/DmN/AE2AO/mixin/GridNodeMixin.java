@@ -4,7 +4,7 @@ import appeng.me.GridNode;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
-import ru.DmN.AE2AO.Main;
+import ru.DmN.AE2AO.AE2AOMain;
 
 @Mixin(value = GridNode.class, remap = false)
 public class GridNodeMixin {
@@ -16,6 +16,6 @@ public class GridNodeMixin {
      */
     @Overwrite private int getUsedChannels()
     {
-        return Main.config.DisableChannels ? 1 : usedChannels;
+        return AE2AOMain.config.DisableChannels.get() ? 1 : usedChannels;
     }
 }

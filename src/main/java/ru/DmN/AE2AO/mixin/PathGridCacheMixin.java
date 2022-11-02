@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
-import ru.DmN.AE2AO.Main;
+import ru.DmN.AE2AO.AE2AOMain;
 
 import java.util.Set;
 
@@ -34,7 +34,7 @@ public class PathGridCacheMixin {
 
         if (controllers.isEmpty()) {
             controllerState = ControllerState.NO_CONTROLLER;
-        } else if (Main.config.ControllerLimits) {
+        } else if (AE2AOMain.config.ControllerLimits.get()) {
             IGridNode startingNode = this.controllers.iterator().next().getGridNode(AEPartLocation.INTERNAL);
             if (startingNode == null) {
                 this.controllerState = ControllerState.CONTROLLER_CONFLICT;

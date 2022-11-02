@@ -8,10 +8,10 @@ import net.minecraft.util.math.BlockPos;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
-import ru.DmN.AE2AO.Main;
+import ru.DmN.AE2AO.AE2AOMain;
 
 @Mixin(value = ControllerValidator.class, remap = false)
-public class ControllerValidatorMixin {
+public abstract class ControllerValidatorMixin {
     @Shadow private boolean isValid;
     @Shadow private int found;
     @Shadow private int minX;
@@ -20,6 +20,8 @@ public class ControllerValidatorMixin {
     @Shadow private int maxX;
     @Shadow private int maxY;
     @Shadow private int maxZ;
+
+    @Shadow public abstract int getFound();
 
     /**
      * @author DomamaN202
@@ -38,7 +40,7 @@ public class ControllerValidatorMixin {
             minZ = Math.min(pos.getZ(), minZ);
             maxZ = Math.max(pos.getZ(), maxZ);
 
-            if (maxX - minX < Main.config.Max_X && maxY - minY < Main.config.Max_Y && maxZ - minZ < Main.config.Max_Z) {
+            if (maxX - minX < AE2AOMain.config.ControllerSizeLimits[0].get() && maxY - minY < AE2AOMain.config.ControllerSizeLimits[1].get() && maxZ - minZ < AE2AOMain.config.ControllerSizeLimits[2].get()) {
                 this.found++;
                 return true;
             }

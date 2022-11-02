@@ -3,7 +3,7 @@ package ru.DmN.AE2AO.mixin;
 import appeng.items.AEBaseItem;
 import appeng.items.storage.AbstractStorageCell;
 import org.spongepowered.asm.mixin.Mixin;
-import ru.DmN.AE2AO.Main;
+import ru.DmN.AE2AO.AE2AOMain;
 
 @Mixin(AbstractStorageCell.class)
 public class AbstractStorageCellMixin extends AEBaseItem {
@@ -11,6 +11,6 @@ public class AbstractStorageCellMixin extends AEBaseItem {
 
     @Override
     public boolean isImmuneToFire() {
-        return Main.config.CellFireResistance || super.isImmuneToFire();
+        return AE2AOMain.config.CellFireResistance.get() || super.isImmuneToFire();
     }
 }
