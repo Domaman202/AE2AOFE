@@ -7,7 +7,9 @@
     "AbstractStorageCellMixin",
     "ControllerValidatorMixin",
     "GridNodeMixin",
-    "PathGridCacheMixin"
+    "PathGridCacheMixin",
+    "PortableCellItemMixin",
+    "SpatialStorageCellItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1
