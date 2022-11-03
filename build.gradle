@@ -19,6 +19,7 @@ apply plugin: "eclipse"
 
 version = "${mod_version}-${mc_version}"
 group = "ru.DmN.${modid}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "${modid}"
 
 minecraft {
     // The mappings can be changed at any time, and must be in the following format.
