@@ -4,12 +4,10 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "ae2ao.refmap.json",
   "mixins": [
-    "AbstractStorageCellMixin",
     "ControllerTileEntityMixin",
     "GridNodeMixin",
-    "PathGridCacheMixin",
-    "PortableCellItemMixin",
-    "SpatialStorageCellItemMixin"
+    "ItemEntityMixin",
+    "PathGridCacheMixin"
   ],
   "injectors": {
     "defaultRequire": 1
