@@ -1,4 +1,6 @@
-current version: 8.0.0
+current version: 8.0.1
+
+config file: .minecraft/config/ae2ao.toml
 
 
 ## Cells
