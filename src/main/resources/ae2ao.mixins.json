@@ -5,9 +5,11 @@
   "refmap": "ae2ao.refmap.json",
   "mixins": [
     "AbstractStorageCellMixin",
-    "ControllerValidatorMixin",
+    "ControllerTileEntityMixin",
     "GridNodeMixin",
-    "PathGridCacheMixin"
+    "PathGridCacheMixin",
+    "PortableCellItemMixin",
+    "SpatialStorageCellItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1
