@@ -19,9 +19,8 @@ public class Config {
 
     Config(final ForgeConfigSpec.Builder builder) {
         DisableChannels = builder.comment("""
-        Disable all channels logic. If true amount of used channels is always 0."""
+                Disable all channels logic. If true amount of used channels is always 0."""
         ).define("DisableChannels", false);
-
 
 
         builder.push("Cells");
@@ -34,17 +33,16 @@ public class Config {
         builder.pop();
 
 
-
         builder.push("Controllers");
 
         ControllerLimits = builder.comment("""
-         Control all controller limits. If is false, any variant of controller structure is correct."""
+                Control all controller limits. If is false, any variant of controller structure is correct."""
         ).define("ControllerLimits", true);
         ControllerCross = builder.comment("""
-         If is false, possible structure with cross pattern, i.e. two neighbors on two or three axes."""
+                If is false, possible structure with cross pattern, i.e. two neighbors on two or three axes."""
         ).define("ControllerCross", false);
         MultipleControllers = builder.comment("""
-         If is true, possible connect to one me net multiple controller structure."""
+                If is true, possible connect to one me net multiple controller structure."""
         ).define("MultipleControllers", false);
 
         builder.push("ControllerSizeLimits");

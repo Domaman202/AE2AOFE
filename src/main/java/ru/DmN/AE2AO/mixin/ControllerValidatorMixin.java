@@ -1,5 +1,6 @@
 package ru.DmN.AE2AO.mixin;
 
+import appeng.api.networking.IGridVisitor;
 import appeng.api.networking.pathing.ControllerState;
 import appeng.blockentity.networking.ControllerBlockEntity;
 import appeng.me.pathfinding.ControllerValidator;
@@ -10,7 +11,7 @@ import ru.DmN.AE2AO.MegaControllerValidator;
 import java.util.Collection;
 
 @Mixin(value = ControllerValidator.class, remap = false)
-public class ControllerValidatorMixin {
+public abstract class ControllerValidatorMixin implements IGridVisitor {
     /**
      * @author PashkovD
      * @reason Redirect to MegaControllerValidator
