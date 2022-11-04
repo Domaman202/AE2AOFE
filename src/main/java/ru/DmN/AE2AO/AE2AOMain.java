@@ -10,9 +10,8 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(AE2AOMain.ModID)
 public class AE2AOMain {
-    static final String ModID = "ae2ao";
-
-    static final Logger LOGGER = LogManager.getLogger();
+    public static final String ModID = "ae2ao";
+    public static final Logger LOGGER = LogManager.getLogger(ModID);
     public static Config config = Config.Instance;
 
     public AE2AOMain() {
