@@ -13,9 +13,9 @@ public class Config {
     public final ForgeConfigSpec.BooleanValue MultipleControllers;
     public final ForgeConfigSpec.IntValue[] ControllerSizeLimits = {null, null, null};
     public final ForgeConfigSpec.BooleanValue CellFireResistance;
-    public final ForgeConfigSpec.BooleanValue CellBlastResistance;
+    public final ForgeConfigSpec.BooleanValue CellExplosionResistance;
     public final ForgeConfigSpec.BooleanValue PortableCellFireResistance;
-    public final ForgeConfigSpec.BooleanValue PortableCellBlastResistance;
+    public final ForgeConfigSpec.BooleanValue PortableCellExplosionResistance;
 
     Config(final ForgeConfigSpec.Builder builder) {
         DisableChannels = builder.comment("""
@@ -27,9 +27,9 @@ public class Config {
         builder.push("Cells");
 
         CellFireResistance = builder.define("CellFireResistance", false);
-        CellBlastResistance = builder.define("CellBlastResistance", false);
+        CellExplosionResistance = builder.define("CellExplosionResistance", false);
         PortableCellFireResistance = builder.define("PortableCellFireResistance", false);
-        PortableCellBlastResistance = builder.define("PortableCellBlastResistance", false);
+        PortableCellExplosionResistance = builder.define("PortableCellExplosionResistance", false);
 
         builder.pop();
 

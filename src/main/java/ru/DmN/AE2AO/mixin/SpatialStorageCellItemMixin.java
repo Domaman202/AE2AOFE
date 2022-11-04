@@ -4,10 +4,10 @@ import appeng.items.AEBaseItem;
 import appeng.items.storage.SpatialStorageCellItem;
 import org.spongepowered.asm.mixin.Mixin;
 import ru.DmN.AE2AO.AE2AOMain;
-import ru.DmN.AE2AO.ICanHasBlastResistance;
+import ru.DmN.AE2AO.ICanHasExplosionResistance;
 
 @Mixin(value = SpatialStorageCellItem.class, remap = false)
-public abstract class SpatialStorageCellItemMixin extends AEBaseItem implements ICanHasBlastResistance {
+public abstract class SpatialStorageCellItemMixin extends AEBaseItem implements ICanHasExplosionResistance {
     public SpatialStorageCellItemMixin(Properties properties) {
         super(properties);
     }
@@ -16,7 +16,7 @@ public abstract class SpatialStorageCellItemMixin extends AEBaseItem implements 
     public boolean isFireResistant() {
         return AE2AOMain.config.CellFireResistance.get() || super.isFireResistant();
     }
-    public boolean isBlastResistant(){
-        return AE2AOMain.config.CellBlastResistance.get();
+    public boolean isExplosionResistant(){
+        return AE2AOMain.config.CellExplosionResistance.get();
     }
 }

@@ -8,7 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Invoker;
-import ru.DmN.AE2AO.ICanHasBlastResistance;
+import ru.DmN.AE2AO.ICanHasExplosionResistance;
 
 import javax.annotation.Nonnull;
 
@@ -19,8 +19,8 @@ public abstract class ItemEntityMixin extends Entity {
     }
     public boolean isInvulnerableTo(@Nonnull DamageSource source) {
         if (source.isExplosion()){
-            if (invokeGetItem().getItem() instanceof ICanHasBlastResistance item){
-                if (item.isBlastResistant()){
+            if (invokeGetItem().getItem() instanceof ICanHasExplosionResistance item){
+                if (item.isExplosionResistant()){
                     return true;
                 }
             }
