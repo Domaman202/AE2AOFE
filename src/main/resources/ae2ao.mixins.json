@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "ae2ao.refmap.json",
   "mixins": [
+    "AEKeyTypeMixin",
     "BasicStorageCellMixin",
     "ControllerValidatorMixin",
     "GridNodeMixin",

@@ -16,6 +16,8 @@ public class Config {
     public final ForgeConfigSpec.BooleanValue CellExplosionResistance;
     public final ForgeConfigSpec.BooleanValue PortableCellFireResistance;
     public final ForgeConfigSpec.BooleanValue PortableCellExplosionResistance;
+    public final ForgeConfigSpec.IntValue ItemsPerByte;
+    public final ForgeConfigSpec.IntValue MbPerByte;
 
     Config(final ForgeConfigSpec.Builder builder) {
         DisableChannels = builder.comment("""
@@ -29,6 +31,9 @@ public class Config {
         CellExplosionResistance = builder.define("CellExplosionResistance", false);
         PortableCellFireResistance = builder.define("PortableCellFireResistance", false);
         PortableCellExplosionResistance = builder.define("PortableCellExplosionResistance", false);
+
+        ItemsPerByte = builder.defineInRange("ItemsPerByte", 8, 1, Integer.MAX_VALUE);
+        MbPerByte = builder.defineInRange("MbPerByte", 8000, 1, Integer.MAX_VALUE);
 
         builder.pop();
 
