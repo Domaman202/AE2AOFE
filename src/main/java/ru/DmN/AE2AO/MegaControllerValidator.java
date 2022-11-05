@@ -42,9 +42,9 @@ public class MegaControllerValidator implements IGridVisitor {
             minZ = Math.min(pos.getZ(), minZ);
             maxZ = Math.max(pos.getZ(), maxZ);
 
-            if (maxX - minX < AE2AOMain.config.ControllerSizeLimits[0].get() &&
-                    maxY - minY < AE2AOMain.config.ControllerSizeLimits[1].get() &&
-                    maxZ - minZ < AE2AOMain.config.ControllerSizeLimits[2].get()
+            if (maxX - minX < AE2AOMain.config.ControllerSizeLimits.Max_X.get() &&
+                    maxY - minY < AE2AOMain.config.ControllerSizeLimits.Max_Y.get() &&
+                    maxZ - minZ < AE2AOMain.config.ControllerSizeLimits.Max_Z.get()
             ) {
                 block_set.remove(c);
                 return true;
