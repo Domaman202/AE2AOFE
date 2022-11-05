@@ -15,10 +15,12 @@ public abstract class PortableCellItemMixin extends AEBasePoweredItem implements
         super(powerCapacity, props);
     }
 
+    @Override
     public boolean isFireResistant() {
         return AE2AOMain.config.PortableCellFireResistance.get() || super.isFireResistant();
     }
 
+    @Override
     public boolean isExplosionResistant() {
         return AE2AOMain.config.PortableCellExplosionResistance.get();
     }

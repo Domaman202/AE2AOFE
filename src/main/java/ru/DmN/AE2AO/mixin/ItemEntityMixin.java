@@ -21,6 +21,7 @@ public abstract class ItemEntityMixin extends Entity {
         super(p_19870_, p_19871_);
     }
 
+    @Override
     public boolean isInvulnerableTo(@Nonnull DamageSource source) {
         if (source.isExplosion()) {
             if (getItem().getItem() instanceof ICanHasExplosionResistance item) {

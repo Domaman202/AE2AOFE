@@ -12,6 +12,7 @@ public abstract class GridNodeMixin implements IGridNode, IPathItem {
     @Shadow
     private int usedChannels;
 
+    @Override
     public int getUsedChannels() {
         return AE2AOMain.config.DisableChannels.get() ? 1 : usedChannels;
     }

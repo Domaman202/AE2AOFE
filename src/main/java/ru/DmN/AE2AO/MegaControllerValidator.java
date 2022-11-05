@@ -31,6 +31,7 @@ public class MegaControllerValidator implements IGridVisitor {
         this.block_set = block_set;
     }
 
+    @Override
     public boolean visitNode(IGridNode n) {
         if (valid && n.getOwner() instanceof ControllerBlockEntity c) {
             BlockPos pos = c.getBlockPos();

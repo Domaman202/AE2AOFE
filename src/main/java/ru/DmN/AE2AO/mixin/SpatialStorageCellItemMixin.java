@@ -13,10 +13,12 @@ public abstract class SpatialStorageCellItemMixin extends AEBaseItem implements 
         super(properties);
     }
 
+    @Override
     public boolean isFireResistant() {
         return AE2AOMain.config.CellFireResistance.get() || super.isFireResistant();
     }
 
+    @Override
     public boolean isExplosionResistant() {
         return AE2AOMain.config.CellExplosionResistance.get();
     }
