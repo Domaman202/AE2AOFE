@@ -1,25 +1,24 @@
-
-modLoader="javafml"
-loaderVersion="[1,)"
-license="MIT"
+modLoader = "javafml"
+loaderVersion = "[1,)"
+license = "MIT"
 
 
 [[mods]]
-    modId="ae2ao"
+modId = "ae2ao"
 
-    version="${file.jarVersion}"
-    displayName="AE2AO"
-    logoFile="logo.png"
+version = "${file.jarVersion}"
+displayName = "AE2AO"
+logoFile = "logo.png"
 
-    authors="DomamaN202, PashkovD"
+authors = "DomamaN202, PashkovD"
 
-    description="AE2 addon"
+description = "AE2 addon"
 
 
 [[dependencies.ae2ao]]
-    modId="ae2"
-    mandatory=true
-    versionRange="[10,11)"
-    ordering="AFTER"
-    side="BOTH"
+modId = "ae2"
+mandatory = true
+versionRange = "[10,12)"
+ordering = "AFTER"
+side = "BOTH"
 

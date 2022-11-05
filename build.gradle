@@ -84,8 +84,7 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
-    compileOnly "appeng:appliedenergistics2:${ae2_version}"
-    runtimeOnly fg.deobf("appeng:appliedenergistics2:${ae2_version}")
+    implementation fg.deobf("appeng:appliedenergistics2-forge:${ae2_version}")
     annotationProcessor 'org.spongepowered:mixin:0.8:processor'
 }
 
