@@ -6,12 +6,10 @@ import appeng.api.networking.IGridVisitor;
 import appeng.api.networking.pathing.ControllerState;
 import appeng.api.util.AEPartLocation;
 import appeng.tile.networking.ControllerTileEntity;
-import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Set;
 
 public class MegaControllerValidator implements IGridVisitor {
     private boolean valid = true;
@@ -37,7 +35,7 @@ public class MegaControllerValidator implements IGridVisitor {
         final IGridHost host = n.getMachine();
         if (this.isValid() && host instanceof ControllerTileEntity) {
             final ControllerTileEntity c = (ControllerTileEntity) host;
-            BlockPos pos = c.getPos();
+            BlockPos pos = c.getBlockPos();
 
             minX = Math.min(pos.getX(), minX);
             maxX = Math.max(pos.getX(), maxX);
@@ -83,7 +81,7 @@ public class MegaControllerValidator implements IGridVisitor {
 
             sad.remove(startingController);
 
-            MegaControllerValidator cv = new MegaControllerValidator(startingController.getPos(), sad);
+            MegaControllerValidator cv = new MegaControllerValidator(startingController.getBlockPos(), sad);
             startingNode.beginVisit(cv);
 
             if (!cv.isValid())

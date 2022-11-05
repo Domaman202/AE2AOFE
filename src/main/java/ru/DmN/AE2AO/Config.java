@@ -21,14 +21,12 @@ public class Config {
         ).define("DisableChannels", false);
 
 
-
         builder.push("Cells");
 
         CellFireResistance = builder.define("CellFireResistance", false);
         PortableCellFireResistance = builder.define("PortableCellFireResistance", false);
 
         builder.pop();
-
 
 
         builder.push("Controllers");
