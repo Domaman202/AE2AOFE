@@ -6,9 +6,9 @@
   "mixins": [
     "AEKeyTypeMixin",
     "BasicStorageCellMixin",
-    "ControllerValidatorMixin",
     "GridNodeMixin",
     "ItemEntityMixin",
+    "PathingServiceMixin",
     "PortableCellItemMixin",
     "SpatialStorageCellItemMixin"
   ],
