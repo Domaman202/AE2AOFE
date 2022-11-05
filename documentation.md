@@ -1,4 +1,4 @@
-current version: 8.0.1
+current version: 8.1.0
 
 config file: .minecraft/config/ae2ao.toml
 
@@ -9,9 +9,27 @@ config file: .minecraft/config/ae2ao.toml
 
    default = false
 
-2. ### PortableCellFireResistance
+2. ### CellExplosionResistance
 
    default = false
+
+3. ### PortableCellFireResistance
+
+   default = false
+
+4. ### PortableCellExplosionResistance
+
+   default = false
+
+5. ### ItemsPerByte
+
+   default = 8
+
+6. ### MbPerByte
+
+   default = 8000
+
+   Milibuckets of fluid per byte.
 
 
 ## Controllers
