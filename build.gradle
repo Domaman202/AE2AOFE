@@ -9,9 +9,7 @@ buildscript {
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
-plugins {
-    id "maven-publish"
-}
+
 
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.spongepowered.mixin'
@@ -20,6 +18,8 @@ apply plugin: "eclipse"
 version = "${mod_version}-${mc_version}"
 group = "ru.DmN.${modid}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "${modid}"
+
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = JavaLanguageVersion.of(8)
 
 minecraft {
     // The mappings can be changed at any time, and must be in the following format.
@@ -60,8 +60,6 @@ minecraft {
 }
 
 repositories {
-    mavenLocal()
-    mavenCentral()
     maven { // modmaven, maven proxy
         name 'modmaven'
         url "https://modmaven.dev/"
@@ -80,11 +78,11 @@ jar {
     manifest {
         attributes([
                 "Specification-Title"     : "${modid}",
-//                "Specification-Vendor"    : "examplemodsareus",
-//                "Specification-Version"   : "1", // We are version 1 of ourselves
-//                "Implementation-Title"    : project.name,
+                // "Specification-Vendor"    : "examplemodsareus",
+                // "Specification-Version"   : "1", // We are version 1 of ourselves
+                // "Implementation-Title"    : project.name,
                 "Implementation-Version"  : "${mod_version}",
-//                "Implementation-Vendor"   : "examplemodsareus",
+                // "Implementation-Vendor"   : "examplemodsareus",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
                 "MixinConfigs"            : "${modid}.mixins.json"
         ])
@@ -93,5 +91,4 @@ jar {
 
 mixin {
     add sourceSets.main, "${modid}.mixins.refmap.json"
-    config "${modid}.mixins.json"
 }
