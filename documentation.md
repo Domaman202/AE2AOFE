@@ -1,4 +1,4 @@
-current version: 8.1.0
+current version: 8.1.1
 
 config file: .minecraft/config/ae2ao.toml
 
@@ -60,13 +60,20 @@ multiple controller structure.
     
     default = {7, 7, 7}
 
-    Control controller structure size limits.
-You have any questions about this?
+   Control controller structure size limits.
+   You have any questions about this?
 
 ## Other
+
 1. ### DisableChannels
 
-    default = false
+   default = false
 
-   Disable all channels logic. If true amount 
-of used channels is always 0.
+   Disable all channels logic. If true amount
+   of used channels is always 0.
+
+# Changelog
+
+#### 8.1
+
+Added: Added CellExplosionResistance, PortableCellExplosionResistance, ItemsPerByte and MbPerByte
