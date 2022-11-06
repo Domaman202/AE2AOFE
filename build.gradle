@@ -1,8 +1,9 @@
 buildscript {
     repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = 'https://repo.spongepowered.org/maven' }
+        maven { url = 'https://files.minecraftforge.net/maven' }
+        maven { url = 'https://repo.spongepowered.org/maven/' }
         mavenCentral()
+
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
@@ -10,12 +11,20 @@ buildscript {
     }
 }
 
-
 apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'eclipse'
 apply plugin: 'org.spongepowered.mixin'
-apply plugin: "eclipse"
 
-version = "${mod_version}-${mc_version}"
+def gitBranch() {
+    def branch = ""
+    def proc = "git rev-parse --abbrev-ref HEAD".execute()
+    proc.in.eachLine { line -> branch = line }
+    proc.err.eachLine { line -> println line }
+    proc.waitFor()
+    branch
+}
+
+version = "${mod_version}-${gitBranch().replace("/", ".")}"
 group = "ru.DmN.${modid}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "${modid}"
 
@@ -27,7 +36,7 @@ minecraft {
     // stable_#            Stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: "official", version: "${mc_version}"
+    mappings channel: 'official', version: "${mc_version}"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 
     //accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
@@ -36,10 +45,15 @@ minecraft {
     // These can be tweaked, removed, or duplicated as needed.
     runs {
         client {
-            property 'forge.logging.console.level', 'debug'
-            property 'mixin.env.disableRefMap', 'true'
+            properties 'fml.earlyprogresswindow': 'false'
+            properties 'mixin.env.disableRefMap': 'true'
             workingDirectory project.file('run')
-            property "mixin.debug.export", "true"
+            arg "-mixin.config=" + archivesBaseName + ".mixins.json"
+
+
+            // Recommended logging level for the console
+            property 'forge.logging.console.level', 'debug'
+
             mods {
                 ae2ao {
                     source sourceSets.main
@@ -48,8 +62,13 @@ minecraft {
         }
 
         server {
-            property 'forge.logging.console.level', 'debug'
+            property 'mixin.env.disableRefMap', 'true'
             workingDirectory project.file('run')
+            arg "-mixin.config=" + archivesBaseName + ".mixins.json"
+
+
+            // Recommended logging level for the console
+            property 'forge.logging.console.level', 'debug'
             mods {
                 ae2ao {
                     source sourceSets.main
@@ -67,19 +86,19 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}" //21
+    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
     implementation fg.deobf("appeng:appliedenergistics2:${ae2_version}")
     annotationProcessor 'org.spongepowered:mixin:0.8:processor'
 }
 
-// Example for how to get properties into the manifest for reading by the runtime..
+
 jar {
     finalizedBy 'reobfJar'
     manifest {
         attributes([
                 "Specification-Title"     : "${modid}",
                 // "Specification-Vendor"    : "examplemodsareus",
-                // "Specification-Version"   : "1", // We are version 1 of ourselves
+                // "Specification-Version"   : "1",
                 // "Implementation-Title"    : project.name,
                 "Implementation-Version"  : "${mod_version}",
                 // "Implementation-Vendor"   : "examplemodsareus",
@@ -90,5 +109,6 @@ jar {
 }
 
 mixin {
-    add sourceSets.main, "${modid}.mixins.refmap.json"
+    add sourceSets.main, "${modid}.refmap.json"
+    config "${modid}.mixins.json"
 }
