@@ -1,8 +1,8 @@
 buildscript {
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
-        mavenCentral()
         maven {url='https://repo.spongepowered.org/maven/'}
+        mavenCentral()
 
     }
     dependencies {
@@ -13,9 +13,19 @@ buildscript {
 
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
+apply plugin: 'org.spongepowered.mixin'
 
-version = "${mod_version}-${mc_version}"
-group = "ru.DmN.${modid}"
+def gitBranch() {
+    def branch = ""
+    def proc = "git rev-parse --abbrev-ref HEAD".execute()
+    proc.in.eachLine { line -> branch = line }
+    proc.err.eachLine { line -> println line }
+    proc.waitFor()
+    branch
+}
+
+version = "${mod_version}-${gitBranch().replace("/", ".")}"
+group = "ru.DmN.${modid}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "${modid}"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = JavaLanguageVersion.of(17)
@@ -59,7 +69,6 @@ minecraft {
 
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
-
             mods {
                 ae2ao {
                     source sourceSets.main
@@ -70,14 +79,8 @@ minecraft {
 }
 
 repositories {
-    maven {
-        // location of the maven that hosts JEI files
-        name = "Progwml6 maven"
-        url = "https://dvs1.progwml6.com/files/maven/"
-    }
-
-    maven {
-        name "Modmaven"
+    maven { // modmaven, maven proxy
+        name 'modmaven'
         url "https://modmaven.dev/"
     }
 }
@@ -90,6 +93,7 @@ dependencies {
 
 
 jar {
+    finalizedBy 'reobfJar'
     manifest {
         attributes([
                 "Specification-Title"     : "${modid}",
@@ -104,8 +108,7 @@ jar {
     }
 }
 
-apply plugin: 'org.spongepowered.mixin'
-
 mixin {
     add sourceSets.main, "${modid}.refmap.json"
+    config "${modid}.mixins.json"
 }
