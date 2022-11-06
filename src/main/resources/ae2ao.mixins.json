@@ -4,9 +4,12 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "ae2ao.refmap.json",
   "mixins": [
-    "AbstractStorageCellMixin",
+    "ApiStorageMixin",
+    "BasicFluidStorageCellMixin",
+    "BasicStorageCellItemMixin",
     "ControllerTileEntityMixin",
     "GridNodeMixin",
+    "ItemEntityMixin",
     "PathGridCacheMixin",
     "PortableCellItemMixin",
     "SpatialStorageCellItemMixin"
