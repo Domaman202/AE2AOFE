@@ -1,15 +1,16 @@
 package ru.DmN.AE2AO.mixin;
 
-import appeng.api.implementations.items.ISpatialStorageCell;
+import appeng.api.storage.cells.IBasicCellItem;
+import appeng.hooks.AEToolItem;
 import appeng.items.AEBaseItem;
-import appeng.items.storage.SpatialStorageCellItem;
+import appeng.items.storage.BasicStorageCell;
 import org.spongepowered.asm.mixin.Mixin;
 import ru.DmN.AE2AO.AE2AOMain;
 import ru.DmN.AE2AO.ICanHasExplosionResistance;
 
-@Mixin(value = SpatialStorageCellItem.class, remap = false)
-public abstract class SpatialStorageCellItemMixin extends AEBaseItem implements ISpatialStorageCell, ICanHasExplosionResistance {
-    public SpatialStorageCellItemMixin(Properties properties) {
+@Mixin(value = BasicStorageCell.class, remap = false)
+public abstract class BasicStorageCellMixin extends AEBaseItem implements IBasicCellItem, AEToolItem, ICanHasExplosionResistance {
+    public BasicStorageCellMixin(Properties properties) {
         super(properties);
     }
 
