@@ -34,12 +34,12 @@ public abstract class ControllerTileEntityMixin extends AENetworkPowerTileEntity
      */
     @Overwrite
     public void onNeighborChange(final boolean force) {
-        final boolean xx = this.invokeCheckController(this.pos.offset(Direction.EAST))
-                && this.invokeCheckController(this.pos.offset(Direction.WEST));
-        final boolean yy = this.invokeCheckController(this.pos.offset(Direction.UP))
-                && this.invokeCheckController(this.pos.offset(Direction.DOWN));
-        final boolean zz = this.invokeCheckController(this.pos.offset(Direction.NORTH))
-                && this.invokeCheckController(this.pos.offset(Direction.SOUTH));
+        final boolean xx = this.invokeCheckController(this.worldPosition.relative(Direction.EAST))
+                && this.invokeCheckController(this.worldPosition.relative(Direction.WEST));
+        final boolean yy = this.invokeCheckController(this.worldPosition.relative(Direction.UP))
+                && this.invokeCheckController(this.worldPosition.relative(Direction.DOWN));
+        final boolean zz = this.invokeCheckController(this.worldPosition.relative(Direction.NORTH))
+                && this.invokeCheckController(this.worldPosition.relative(Direction.SOUTH));
 
         // int meta = world.getBlockMetadata( xCoord, yCoord, zCoord );
         // boolean hasPower = meta > 0;

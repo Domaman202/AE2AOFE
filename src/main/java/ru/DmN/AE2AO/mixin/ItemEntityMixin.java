@@ -12,7 +12,7 @@ import ru.DmN.AE2AO.ICanHasExplosionResistance;
 
 import javax.annotation.Nonnull;
 
-@Mixin(value = ItemEntity.class, remap = false)
+@Mixin(value = ItemEntity.class)
 public abstract class ItemEntityMixin extends Entity {
 
     @Shadow
