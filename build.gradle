@@ -38,6 +38,7 @@ minecraft {
 
     runs {
         client {
+            property 'mixin.env.disableRefMap', 'true'
             workingDirectory project.file('run')
             arg "-mixin.config=${modid}.mixin.json"
             property 'forge.logging.console.level', 'debug'
@@ -49,6 +50,7 @@ minecraft {
         }
 
         server {
+            property 'mixin.env.disableRefMap', 'true'
             workingDirectory project.file('run')
             arg "-mixin.config=${modid}.mixin.json"
             property 'forge.logging.console.level', 'debug'
@@ -69,15 +71,16 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.5-36.2.34'
-    compileOnly fg.deobf("appeng:appliedenergistics2:${ae2_version}")
-    runtimeOnly "appeng:appliedenergistics2:${ae2_version}"
+    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
+    implementation fg.deobf("appeng:appliedenergistics2:${ae2_version}")
+
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     testAnnotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
 
 jar {
+    finalizedBy('reobfJar')
     manifest {
         attributes([
                 "Specification-Title"     : "${modid}",
@@ -87,14 +90,13 @@ jar {
                 "Implementation-Version"  : "${mod_version}",
                 // "Implementation-Vendor"   : "examplemodsareus",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                "TweakClass"              : "org.spongepowered.asm.launch.MixinTweaker",
-                "TweakOrder"              : 0,
+                // "TweakClass"              : "org.spongepowered.asm.launch.MixinTweaker",
+                // "TweakOrder"              : 0,
                 "MixinConfigs"            : "${modid}.mixins.json"
         ])
     }
 }
 
-jar.finalizedBy('reobfJar')
 
 mixin {
     add sourceSets.main, "${modid}.refmap.json"
