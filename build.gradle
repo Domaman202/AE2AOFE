@@ -1,19 +1,19 @@
 buildscript {
     repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
-        maven { url = 'https://repo.spongepowered.org/maven/' }
+        maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = 'https://repo.spongepowered.org/maven' }
         mavenCentral()
-
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
-
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
+
 
 def gitBranch() {
     def branch = ""
@@ -48,10 +48,8 @@ minecraft {
             properties 'fml.earlyprogresswindow': 'false'
             properties 'mixin.env.disableRefMap': 'true'
             workingDirectory project.file('run')
-            arg "-mixin.config=" + archivesBaseName + ".mixins.json"
+            arg "-mixin.config=${modid}.mixins.json"
 
-
-            // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
             mods {
@@ -64,10 +62,7 @@ minecraft {
         server {
             property 'mixin.env.disableRefMap', 'true'
             workingDirectory project.file('run')
-            arg "-mixin.config=" + archivesBaseName + ".mixins.json"
-
-
-            // Recommended logging level for the console
+            arg "-mixin.config=${modid}.mixins.json"
             property 'forge.logging.console.level', 'debug'
             mods {
                 ae2ao {
@@ -88,7 +83,9 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
     implementation fg.deobf("appeng:appliedenergistics2:${ae2_version}")
-    annotationProcessor 'org.spongepowered:mixin:0.8:processor'
+
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    testAnnotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
 
@@ -108,7 +105,7 @@ jar {
     }
 }
 
+
 mixin {
     add sourceSets.main, "${modid}.refmap.json"
-    config "${modid}.mixins.json"
 }
