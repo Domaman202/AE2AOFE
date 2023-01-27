@@ -4,7 +4,7 @@ import appeng.api.stacks.AEItemKey;
 import appeng.api.stacks.AEKeyType;
 import appeng.core.AppEng;
 import appeng.core.localization.GuiText;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -47,6 +47,6 @@ public class AE2AOItemKeys extends AEKeyType {
 
     @Override
     public Stream<TagKey<?>> getTagNames() {
-        return Registry.ITEM.getTagNames().map(t -> t);
+        return BuiltInRegistries.ITEM.getTagNames().map(t -> t);
     }
 }
