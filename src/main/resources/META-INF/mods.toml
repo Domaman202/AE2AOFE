@@ -19,7 +19,7 @@ license="MIT"
 [[dependencies.ae2ao]]
     modId = "ae2"
     mandatory = false
-    versionRange = "[13,14)"
+    versionRange = "[15,16)"
     ordering = "AFTER"
     side = "BOTH"
 

@@ -1,5 +1,6 @@
 package ru.DmN.AE2AO.mixin;
 
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -23,7 +24,7 @@ public abstract class ItemEntityMixin extends Entity {
 
     @Override
     public boolean isInvulnerableTo(@Nonnull DamageSource source) {
-        if (source.isExplosion()) {
+        if (source.is(DamageTypeTags.IS_EXPLOSION)) {
             if (getItem().getItem() instanceof ICanHasExplosionResistance item) {
                 if (item.isExplosionResistant()) {
                     return true;
