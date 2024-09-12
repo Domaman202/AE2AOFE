@@ -1,12 +1,13 @@
 package ru.DmN.AE2AO;
 
 import appeng.api.stacks.AEItemKey;
+import appeng.api.stacks.AEKey;
 import appeng.api.stacks.AEKeyType;
 import appeng.core.AppEng;
 import appeng.core.localization.GuiText;
-import net.minecraft.core.Registry;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
+import com.mojang.serialization.MapCodec;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 
@@ -14,6 +15,11 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 public class AE2AOItemKeys extends AEKeyType {
+
+    @Override
+    public MapCodec<? extends AEKey> codec() {
+        return AEItemKey.MAP_CODEC;
+    }
 
     @Override
     public int getAmountPerByte() {
@@ -29,15 +35,10 @@ public class AE2AOItemKeys extends AEKeyType {
     }
 
     @Override
-    public AEItemKey readFromPacket(FriendlyByteBuf input) {
+    public AEItemKey readFromPacket(RegistryFriendlyByteBuf input) {
         Objects.requireNonNull(input);
 
         return AEItemKey.fromPacket(input);
-    }
-
-    @Override
-    public AEItemKey loadKeyFromTag(CompoundTag tag) {
-        return AEItemKey.fromTag(tag);
     }
 
     @Override
@@ -47,6 +48,6 @@ public class AE2AOItemKeys extends AEKeyType {
 
     @Override
     public Stream<TagKey<?>> getTagNames() {
-        return Registry.ITEM.getTagNames().map(t -> t);
+        return BuiltInRegistries.ITEM.getTagNames().map(t -> t);
     }
 }

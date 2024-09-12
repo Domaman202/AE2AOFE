@@ -1,12 +1,13 @@
 package ru.DmN.AE2AO;
 
 import appeng.api.stacks.AEFluidKey;
+import appeng.api.stacks.AEKey;
 import appeng.api.stacks.AEKeyType;
 import appeng.core.AppEng;
 import appeng.core.localization.GuiText;
-import net.minecraft.core.Registry;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
+import com.mojang.serialization.MapCodec;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 
@@ -24,6 +25,11 @@ public class AE2AOFluidKeys extends AEKeyType {
     }
 
     @Override
+    public MapCodec<? extends AEKey> codec() {
+        return AEFluidKey.MAP_CODEC;
+    }
+
+    @Override
     public int getAmountPerOperation() {
         // On Forge this was 125mb (so 125/1000th of a bucket)
         return AEFluidKey.AMOUNT_BUCKET * 125 / 1000;
@@ -35,15 +41,10 @@ public class AE2AOFluidKeys extends AEKeyType {
     }
 
     @Override
-    public AEFluidKey readFromPacket(FriendlyByteBuf input) {
+    public AEFluidKey readFromPacket(RegistryFriendlyByteBuf input) {
         Objects.requireNonNull(input);
 
         return AEFluidKey.fromPacket(input);
-    }
-
-    @Override
-    public AEFluidKey loadKeyFromTag(CompoundTag tag) {
-        return AEFluidKey.fromTag(tag);
     }
 
     @Override
@@ -53,7 +54,7 @@ public class AE2AOFluidKeys extends AEKeyType {
 
     @Override
     public Stream<TagKey<?>> getTagNames() {
-        return Registry.FLUID.getTagNames().map(t -> t);
+        return BuiltInRegistries.FLUID.getTagNames().map(t -> t);
     }
 
     @Override

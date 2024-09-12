@@ -1,27 +1,27 @@
 package ru.DmN.AE2AO;
 
-import net.minecraftforge.common.ForgeConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.function.Predicate;
 
 public class Config {
-    public static final ForgeConfigSpec Instance_Spec;
+    public static final ModConfigSpec Instance_Spec;
     public static final Config Instance;
 
-    public final ForgeConfigSpec.BooleanValue DisableChannels;
-    public final ForgeConfigSpec.BooleanValue ControllerLimits;
-    public final ForgeConfigSpec.BooleanValue ControllerCross;
-    public final ForgeConfigSpec.BooleanValue MultipleControllers;
+    public final ModConfigSpec.BooleanValue DisableChannels;
+    public final ModConfigSpec.BooleanValue ControllerLimits;
+    public final ModConfigSpec.BooleanValue ControllerCross;
+    public final ModConfigSpec.BooleanValue MultipleControllers;
     public final MaxBoxSize ControllerSizeLimits;
-    public final ForgeConfigSpec.BooleanValue CellFireResistance;
-    public final ForgeConfigSpec.BooleanValue CellExplosionResistance;
-    public final ForgeConfigSpec.BooleanValue PortableCellFireResistance;
-    public final ForgeConfigSpec.BooleanValue PortableCellExplosionResistance;
-    public final ForgeConfigSpec.ConfigValue<Integer> ItemsPerByte;
-    public final ForgeConfigSpec.ConfigValue<Integer> MbPerByte;
+    public final ModConfigSpec.BooleanValue CellFireResistance;
+    public final ModConfigSpec.BooleanValue CellExplosionResistance;
+    public final ModConfigSpec.BooleanValue PortableCellFireResistance;
+    public final ModConfigSpec.BooleanValue PortableCellExplosionResistance;
+    public final ModConfigSpec.ConfigValue<Integer> ItemsPerByte;
+    public final ModConfigSpec.ConfigValue<Integer> MbPerByte;
 
-    Config(final ForgeConfigSpec.Builder builder) {
+    Config(final ModConfigSpec.Builder builder) {
         DisableChannels = builder.comment("""
                 Disable all channels logic. If true amount of used channels is always 0."""
         ).define("DisableChannels", false);
@@ -86,11 +86,11 @@ public class Config {
     }
 
     public static class MaxBoxSize {
-        public final ForgeConfigSpec.ConfigValue<Integer> Max_X;
-        public final ForgeConfigSpec.ConfigValue<Integer> Max_Y;
-        public final ForgeConfigSpec.ConfigValue<Integer> Max_Z;
+        public final ModConfigSpec.ConfigValue<Integer> Max_X;
+        public final ModConfigSpec.ConfigValue<Integer> Max_Y;
+        public final ModConfigSpec.ConfigValue<Integer> Max_Z;
 
-        MaxBoxSize(final ForgeConfigSpec.Builder builder, String name) {
+        MaxBoxSize(final ModConfigSpec.Builder builder, String name) {
 
             builder.push(name);
 
@@ -103,7 +103,7 @@ public class Config {
     }
 
     static {
-        Pair<Config, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Config::new);
+        Pair<Config, ModConfigSpec> specPair = new ModConfigSpec.Builder().configure(Config::new);
         Instance = specPair.getLeft();
         Instance_Spec = specPair.getRight();
     }

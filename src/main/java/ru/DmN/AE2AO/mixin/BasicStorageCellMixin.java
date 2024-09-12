@@ -16,7 +16,7 @@ public abstract class BasicStorageCellMixin extends AEBaseItem implements IBasic
 
     @Override
     public boolean isFireResistant() {
-        return AE2AOMain.config.CellFireResistance.get() || super.isFireResistant();
+        return AE2AOMain.config.CellFireResistance.get();
     }
 
     @Override

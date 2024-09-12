@@ -1,5 +1,6 @@
 package ru.DmN.AE2AO.mixin;
 
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -14,6 +15,7 @@ import javax.annotation.Nonnull;
 
 @Mixin(ItemEntity.class)
 public abstract class ItemEntityMixin extends Entity {
+
     @Shadow
     public abstract ItemStack getItem();
 
@@ -23,9 +25,15 @@ public abstract class ItemEntityMixin extends Entity {
 
     @Override
     public boolean isInvulnerableTo(@Nonnull DamageSource source) {
-        if (source.isExplosion()) {
+        if (source.is(DamageTypeTags.IS_EXPLOSION)) {
             if (getItem().getItem() instanceof ICanHasExplosionResistance item) {
                 if (item.isExplosionResistant()) {
+                    return true;
+                }
+            }
+        } else if (source.is(DamageTypeTags.IS_FALL)) {
+            if (getItem().getItem() instanceof ICanHasExplosionResistance item) {
+                if (item.isFireResistant()) {
                     return true;
                 }
             }

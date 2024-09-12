@@ -1,9 +1,8 @@
 package ru.DmN.AE2AO;
 
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,7 +14,7 @@ public class AE2AOMain {
     public static Config config = Config.Instance;
 
     public AE2AOMain() {
-        FMLJavaModLoadingContext.get().getModEventBus().register(this);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.Instance_Spec, ModID + ".toml");
+//        ModLoadingContext.get().getActiveContainer().getEventBus().register(this);
+        ModLoadingContext.get().getActiveContainer().registerConfig(ModConfig.Type.COMMON, Config.Instance_Spec, ModID + ".toml");
     }
 }

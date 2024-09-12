@@ -17,7 +17,7 @@ public abstract class PortableCellItemMixin extends AEBasePoweredItem implements
 
     @Override
     public boolean isFireResistant() {
-        return AE2AOMain.config.PortableCellFireResistance.get() || super.isFireResistant();
+        return AE2AOMain.config.PortableCellFireResistance.get();
     }
 
     @Override

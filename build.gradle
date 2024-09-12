@@ -1,18 +1,7 @@
-buildscript {
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = 'https://repo.spongepowered.org/maven' }
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
-    }
+plugins {
+    // Apply the plugin. You can find the latest version at https://projects.neoforged.net/neoforged/ModDevGradle
+    id 'net.neoforged.moddev' version '1.0.11'
 }
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
-apply plugin: 'org.spongepowered.mixin'
 
 
 def gitBranch() {
@@ -28,47 +17,22 @@ version = "${mod_version}-${gitBranch().replace("/", ".")}"
 group = "ru.DmN.${modid}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "${modid}"
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = JavaLanguageVersion.of(17)
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = JavaLanguageVersion.of(21)
 
-minecraft {
-    // The mappings can be changed at any time, and must be in the following format.
-    // snapshot_YYYYMMDD   Snapshot are built nightly.
-    // stable_#            Stables are built at the discretion of the MCP team.
-    // Use non-default mappings at your own risk. they may not always work.
-    // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: 'official', version: "${mc_version}"
-    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
+neoForge {
+    version = "21.1.50"
 
-    //accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-
-    // Default run configurations.
-    // These can be tweaked, removed, or duplicated as needed.
     runs {
         client {
-            properties 'fml.earlyprogresswindow': 'false'
-            properties 'mixin.env.disableRefMap': 'true'
-            workingDirectory project.file('run')
-            arg "-mixin.config=${modid}.mixins.json"
-
-            property 'forge.logging.console.level', 'debug'
-
-            mods {
-                ae2ao {
-                    source sourceSets.main
-                }
-            }
+            client()
         }
-
         server {
-            property 'mixin.env.disableRefMap', 'true'
-            workingDirectory project.file('run')
-            arg "-mixin.config=${modid}.mixins.json"
-            property 'forge.logging.console.level', 'debug'
-            mods {
-                ae2ao {
-                    source sourceSets.main
-                }
-            }
+            server()
+        }
+    }
+    mods {
+        ae2ao {
+            sourceSet sourceSets.main
         }
     }
 }
@@ -81,8 +45,7 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
-    implementation fg.deobf("appeng:appliedenergistics2-forge:${ae2_version}")
+    implementation("appeng:appliedenergistics2-neoforge:${ae2_version}")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     testAnnotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
@@ -103,9 +66,4 @@ jar {
                 "MixinConfigs"            : "${modid}.mixins.json"
         ])
     }
-}
-
-
-mixin {
-    add sourceSets.main, "${modid}.refmap.json"
 }
